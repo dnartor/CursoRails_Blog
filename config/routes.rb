@@ -4,10 +4,12 @@ Rails
   .draw do
     devise_for :users
     get 'home/index'
+    get "perfil", to:"users#edit"
     
     root to: "home#index"
     
     # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+    resources :users,only: [:update]
     resources :categories
     resources :articles do
         get "user/:user_id", to: "articles#from_author", on: :collection

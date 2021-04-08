@@ -1,4 +1,9 @@
 <nav class="nav bg-ligth padding">
+    <% unless current_user.nil? %>
+        <li class="nav-item">
+            <%= image_tag url_for(current_user.avatar),height:40%>
+        </li>
+    <%end%>
     <li class="nav-item">
     <%= link_to "Inicio",root_path, class:"nav-link"%>
     </li>
@@ -8,6 +13,9 @@
     <% if user_signed_in?%>
     <li class="nav-item">
     <%= link_to "Escribir",new_article_path, class:"nav-link"%>
+    </li>
+    <li class="nav-item">
+    <%= link_to "Mi perfil",perfil_path, class:"nav-link"%>
     </li>
     <li class="nav-item">
         <%= link_to "Cerrar sesión",destroy_user_session_path,method: :delete, class:"nav-link"%>
