@@ -1,8 +1,10 @@
 <nav class="nav bg-ligth padding">
     <% unless current_user.nil? %>
-        <li class="nav-item">
-            <%= image_tag url_for(current_user.avatar),height:40%>
-        </li>
+        <%if current_user.avatar.attached?%>
+            <li class="nav-item">
+                <%= image_tag url_for(current_user.avatar),height:40%>
+            </li>
+        <%end%>
     <%end%>
     <li class="nav-item">
     <%= link_to "Inicio",root_path, class:"nav-link"%>
